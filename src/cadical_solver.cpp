@@ -61,7 +61,8 @@ int Cadical::solve(const std::vector<int>& assumptions) {
 
 int Cadical::solve() {
   int result = solver.solve();
-  if (interrupt_handler::interrupted(nullptr)) {
+  auto signal = interrupt_handler::interrupted(nullptr);
+  if (signal > 1) {
     throw interrupted_exception();
   }
   return result;
