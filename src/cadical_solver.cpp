@@ -109,4 +109,12 @@ int Cadical::val(int variable) {
   }
 }
 
+void Cadical::phase(int lit) {
+  solver.phase(lit);
 }
+
+void Cadical::unphase(int lit) {
+  solver.phase(-lit);
+}
+
+} // namespace cadical_interface

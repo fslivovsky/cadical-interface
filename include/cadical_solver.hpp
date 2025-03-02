@@ -24,6 +24,8 @@ class Cadical {
   std::vector<int> get_values(const std::vector<int>& variables);
   std::vector<int> get_model();
   int val(int variable);
+  void phase (int lit);
+  void unphase (int lit);
 
  private:
   void set_assumptions(const std::vector<int>& assumptions);
