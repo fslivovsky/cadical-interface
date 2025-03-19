@@ -117,4 +117,32 @@ void Cadical::unphase(int lit) {
   solver.phase(-lit);
 }
 
+void Cadical::connect_external_propagator (CaDiCaL::ExternalPropagator *propagator) {
+  solver.connect_external_propagator(propagator);
+}
+
+void Cadical::disconnect_external_propagator() {
+  solver.disconnect_external_propagator();
+}
+
+void Cadical::add_observed_var(int var) {
+  solver.add_observed_var(var);
+}
+
+void Cadical::remove_observed_var(int var) {
+  solver.remove_observed_var(var);
+}
+
+void Cadical::reset_observed_vars() {
+  solver.reset_observed_vars();
+}
+
+bool Cadical::is_decision(int lit) {
+  return solver.is_decision(lit);
+}
+
+void Cadical::force_backtrack (size_t new_level) {
+  solver.force_backtrack(new_level);
+}
+
 } // namespace cadical_interface
