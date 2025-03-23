@@ -29,3 +29,5 @@ add_library(cadical_solver src/cadical_solver.cpp include/cadical_solver.hpp)
 target_include_directories(cadical_solver PUBLIC include ${CMAKE_CURRENT_SOURCE_DIR}/cadical/src/)
 add_dependencies(cadical_solver cadical)
 target_link_libraries(cadical_solver PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/cadical/build/libcadical.a interrupt)
+
+add_subdirectory(python)
