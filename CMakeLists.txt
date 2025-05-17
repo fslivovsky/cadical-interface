@@ -3,15 +3,15 @@ cmake_minimum_required(VERSION 3.10)
 project(cadical-interface)
 
 if(CMAKE_BUILD_TYPE MATCHES Debug)
-    set(CONFIGURE_COMMAND configure --debug)
+    set(CADICAL_CONFIGURE_FLAGS "-g")
 else()
-    set(CONFIGURE_COMMAND configure)
+    set(CADICAL_CONFIGURE_FLAGS "")
 endif()
 
 include(ExternalProject)
 ExternalProject_Add(cadical
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cadical
-    CONFIGURE_COMMAND CXXFLAGS=-fPIC ${CMAKE_CURRENT_SOURCE_DIR}/cadical/${CONFIGURE_COMMAND}
+    CONFIGURE_COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/cadical/configure -fPIC ${CADICAL_CONFIGURE_FLAGS}
     BUILD_COMMAND make
     INSTALL_COMMAND ""
     BUILD_IN_SOURCE 1
