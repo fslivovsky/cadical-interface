@@ -14,6 +14,8 @@ Cadical::CadicalTerminator Cadical::terminator;
 
 Cadical::Cadical(): tracer(nullptr) {
   solver.connect_terminator(&terminator);
+  solver.set("factor", 0);
+  solver.set("factorcheck", 0);
 }
 
 Cadical::Cadical(CaDiCaL::Tracer* tracer, bool inprocessing): Cadical() {
