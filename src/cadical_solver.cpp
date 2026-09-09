@@ -160,4 +160,18 @@ void Cadical::unphase(int lit) {
   solver.phase(-lit);
 }
 
+void Cadical::connect_external_propagator(CaDiCaL::ExternalPropagator* p) {
+  if (p) solver.connect_external_propagator(p);
+  else solver.disconnect_external_propagator();
+}
+
+void Cadical::add_observed_var(int var) {
+  solver.add_observed_var(var);
+}
+
+void Cadical::connect_learner(CaDiCaL::Learner* learner) {
+  if (learner) solver.connect_learner(learner);
+  else solver.disconnect_learner();
+}
+
 } // namespace cadical_interface
