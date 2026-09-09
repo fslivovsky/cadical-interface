@@ -43,13 +43,6 @@ class Cadical {
   int val(int variable);
   void phase (int lit);
   void unphase (int lit);
-  // Forward CaDiCaL's learned-clause export (every learned clause, as
-  // external literals) to `learner`; nullptr disconnects.
-  void connect_learner(CaDiCaL::Learner* learner);
-  // IPASIR-UP: connect an external propagator (nullptr disconnects) and
-  // mark a variable observed (required for variables in external clauses).
-  void connect_external_propagator(CaDiCaL::ExternalPropagator* p);
-  void add_observed_var(int var);
 
  private:
   void set_assumptions(const std::vector<int>& assumptions);
