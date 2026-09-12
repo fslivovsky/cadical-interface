@@ -14,7 +14,20 @@ class Cadical {
   Cadical();
   Cadical(CaDiCaL::Tracer* tracer, bool inprocessing = false);
   ~Cadical();
+  // Set a CaDiCaL option. Allowed only right after construction (before any
+  // clause is added): CaDiCaL requires the CONFIGURING state for all but the
+  // logging options. Returns false for an unknown option name -- and asserts
+  // on it in a debug build, because a misspelt or removed option (CaDiCaL
+  // 3.0 has no "preprocessing" option, for instance) is otherwise a silent
+  // no-op.
   bool set(const std::string& name, int val);
+  // Apply one of CaDiCaL's named configurations ("default", "plain", "sat",
+  // "unsat"). "plain" disables every option CaDiCaL classifies as a
+  // simplification technique -- variable elimination, subsumption, probing,
+  // vivification, congruence closure, factoring, inprocessing as a whole --
+  // and is the way to turn preprocessing off. Lucky phases are not in that
+  // class: set("lucky", 0) separately. Same state requirement as set().
+  bool configure(const std::string& name);
   void append_formula(const std::vector<std::vector<int>>& formula);
   void add_clause(const std::vector<int>& clause);
 

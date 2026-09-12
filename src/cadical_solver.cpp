@@ -36,7 +36,15 @@ bool Cadical::CadicalTerminator::terminate() {
 }
 
 bool Cadical::set(const std::string& name, int val) {
-  return solver.set(name.c_str(), val);
+  const bool ok = solver.set(name.c_str(), val);
+  assert(ok && "unknown CaDiCaL option (or set after configuration)");
+  return ok;
+}
+
+bool Cadical::configure(const std::string& name) {
+  const bool ok = solver.configure(name.c_str());
+  assert(ok && "unknown CaDiCaL configuration");
+  return ok;
 }
 
 void Cadical::append_formula(const std::vector<std::vector<int>>& formula) {
