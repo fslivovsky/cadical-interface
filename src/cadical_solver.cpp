@@ -124,6 +124,11 @@ int Cadical::solve_limited(int conflict_limit) {
   return solve();
 }
 
+int Cadical::solve_limited(const std::vector<int>& assumptions, int conflict_limit) {
+  set_assumptions(assumptions);
+  return solve_limited(conflict_limit);
+}
+
 std::vector<int> Cadical::get_failed(const std::vector<int>& assumptions) {
   std::vector<int> failed_literals;
   for (auto l: assumptions) {

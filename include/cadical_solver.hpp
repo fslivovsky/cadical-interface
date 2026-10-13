@@ -50,6 +50,7 @@ class Cadical {
   int solve(const std::vector<int>& assumptions);
   int solve();
   int solve_limited(int conflict_limit);
+  int solve_limited(const std::vector<int>& assumptions, int conflict_limit);
   std::vector<int> get_failed(const std::vector<int>& assumptions);
   std::vector<int> get_values(const std::vector<int>& variables);
   std::vector<int> get_model();
